@@ -12,19 +12,9 @@ export default function App() {
       <IconRegistry icons={EvaIconsPack} />
       <AuthenticationProvider>
         <ApplicationProvider {...eva} theme={eva.light}>
-          <View style={styles.container}>
-            <Navigator></Navigator>
-          </View>
+          <Navigator></Navigator>
         </ApplicationProvider>
       </AuthenticationProvider>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 15,
-    backgroundColor: "#fff",
-  },
-});

@@ -1,14 +1,14 @@
 import React, { Fragment, useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Routes } from "../navigation/Route";
-import { Button, Icon } from "@ui-kitten/components";
+import { View, Text, StyleSheet, GestureResponderEvent } from "react-native";
 
-interface HourProps {
+import { Button, ButtonProps, Icon } from "@ui-kitten/components";
+
+interface HourProps extends ButtonProps {
   hour: string;
   nbCheck: number;
 }
 
-export default function Hour({ hour, nbCheck }: HourProps) {
+export default function Hour({ hour, nbCheck, onLongPress }: HourProps) {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheck = () => {
@@ -23,8 +23,9 @@ export default function Hour({ hour, nbCheck }: HourProps) {
 
   return (
     <Button
-      style={styles.children}
+      style={styles.hour}
       onPress={handleCheck}
+      onLongPress={onLongPress}
       status={isChecked === true ? "success" : "danger"}
     >
       {(evaProps) => (
@@ -35,7 +36,8 @@ export default function Hour({ hour, nbCheck }: HourProps) {
 }
 
 const styles = StyleSheet.create({
-  children: {
+  hour: {
     flex: 1,
+    margin: 2,
   },
 });

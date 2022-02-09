@@ -8,6 +8,8 @@ import {
 } from "@ui-kitten/components";
 import { useAuthentication } from "../context/Authentication";
 import { Routes } from "../navigation/Route";
+import { ScreenContainer } from "../components/ScreenContainer";
+import { StyleSheet } from "react-native";
 
 // interface LoginScreenProps {
 //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -30,15 +32,21 @@ export default function LoginScreen({ navigation }) {
   const OnKeyPress = () => {};
 
   return (
-    <Layout style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <ScreenContainer>
       <Input
         onChangeText={(value) => setLogin(value)}
         textStyle={{}}
         label={(evaProps) => <Text {...evaProps}>Pseudonyme</Text>}
       />
-      <Button onPress={OnPressConnect}>
+      <Button style={styles.btn} onPress={OnPressConnect}>
         {(evaProps) => <Text {...evaProps}>Se connecter</Text>}
       </Button>
-    </Layout>
+    </ScreenContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  btn: {
+    margin: 10,
+  },
+});

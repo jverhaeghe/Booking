@@ -1,28 +1,31 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Routes } from "../navigation/Route";
-import { ButtonGroup } from "@ui-kitten/components";
+import { Button, ButtonGroup, ButtonProps, Text } from "@ui-kitten/components";
 import Hour from "./Hour";
 
-export default function Day() {
-  const day = "mardi 8";
-
+interface DayProps extends ButtonProps {
+  day: string;
+}
+export default function Day({ day, onLongPress }: DayProps) {
   return (
-    <View>
-      <Text>{day}</Text>
+    <View style={styles.day}>
+      <Text category="h6">{day}</Text>
       <ButtonGroup style={styles.btnGroup}>
-        <Hour hour="16" nbCheck={2} />
-        <Hour hour="17" nbCheck={2} />
-        <Hour hour="18" nbCheck={3} />
-        <Hour hour="19" nbCheck={0} />
+        <Hour hour="16" onLongPress={onLongPress} nbCheck={2} />
+        <Hour hour="17" onLongPress={onLongPress} nbCheck={2} />
+        <Hour hour="18" onLongPress={onLongPress} nbCheck={3} />
+        <Hour hour="19" onLongPress={onLongPress} nbCheck={0} />
       </ButtonGroup>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  day: {
+    flex: 0.2,
+  },
   btnGroup: {
-    backgroundColor: "#eee111",
     flexDirection: "row",
   },
 });
